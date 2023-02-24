@@ -1,0 +1,61 @@
+package com.salesken.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.salesken.exception.StudentNotFoundException;
+import com.salesken.model.MarksDTO;
+import com.salesken.model.Semester;
+import com.salesken.model.Student;
+import com.salesken.services.StudentService;
+
+@Controller
+public class StudentController {
+
+	@Autowired
+	private StudentService sService;
+
+	@PostMapping("/addStudents")
+	public Student addStudentHandler(@Valid @RequestBody Student student) throws StudentNotFoundException {
+
+		Student stud = sService.createStudent(student);
+        
+		return stud;
+	}
+
+	@PutMapping("/addMarks/{studentId}")
+	public ResponseEntity<String> addMarksHandler(@PathVariable("studentId") Integer studentId,
+			@RequestBody Semester semester) {
+		
+		sService.addMarks(studentId, semester);
+		return new ResponseEntity<String>("student marks added succesfully..", HttpStatus.OK);
+	}
+
+	@GetMapping("/students/{semesterId}")
+	public ResponseEntity<MarksDTO>  getAveragePercentageOfWholeClass(@PathVariable("semesterId") Integer semId) {
+
+		MarksDTO saveReportDTO = sService.averagePercentage(semId);
+		return new ResponseEntity<MarksDTO>(saveReportDTO, HttpStatus.OK);
+	}
+
+	@GetMapping("/topTwoStudents")
+	public ResponseEntity<List<Student>> getTopTwoStudentHandler() {
+
+		List<Student> studt = sService.topTwoStudents();
+
+		return new ResponseEntity<List<Student>>(studt, HttpStatus.OK);
+
+	}
+
+}

@@ -1,0 +1,49 @@
+package com.salesken.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+public class Student {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer rollNumber;
+	
+	//@NotNull
+	//@Pattern(regexp="[a-zA-Z]{3,12}", message = "User Name must not contains any numbers and Special Character")
+	private String name;
+	
+	//@NotNull
+	private String gender;
+	
+	//@Email
+	//@NotNull
+	private String email;
+	
+	//@NotNull
+	private String address;
+	
+	
+	@ElementCollection
+	private List<Semester> semesters = new ArrayList<>();
+
+
+}

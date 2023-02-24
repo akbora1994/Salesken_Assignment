@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.salesken.exception&apos; to &apos;SaleskenAssignment/src/main/java/com.salesken&apos;&#x0D;&#x0A;- Original project: &apos;StudentReportingSystem&apos;&#x0D;&#x0A;- Destination element: &apos;SaleskenAssignment/src/main/java/com.salesken&apos;&#x0D;&#x0A;- Original element: &apos;StudentReportingSystem/src/main/java/com.salesken.exception&apos;" description="Copy package" destination="=SaleskenAssignment/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.salesken" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.salesken.exception" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1677174497897" version="1.0"/>
+</session>
